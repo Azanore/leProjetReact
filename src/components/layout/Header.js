@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function Header() {
   const userData = useSelector((state) => state.auth.userData);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleClick = () => {
+  const handleClick = async () => {
+    await navigate("", { replace: true });
     dispatch({ type: "LOGOUT" });
   };
-
   return (
     <header
       className={`d-flex justify-content-between align-items-center p-2 bg-dark text-white shadow-sm`}

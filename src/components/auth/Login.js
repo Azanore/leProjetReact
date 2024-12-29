@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/actions";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => Boolean(state.auth.userData));
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticated, navigate]);
 
   const [identifiants, setIdentifiants] = useState({
     pseudo: "",
