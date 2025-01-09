@@ -23,7 +23,15 @@ function UserDetails({ userId }) {
   }
 
   return (
-    <div className=" pe-3 pt-5">
+    <div
+      className="pe-3 pt-5 pb-3"
+      style={{
+        position: "sticky",
+        top: 0,
+        height: "100vh",
+        overflowY: "auto",
+      }}
+    >
       <h2 className="mb-4 text-center">Profil utilisateur</h2>
       <div
         className="mb-3 d-flex justify-content-center align-items-center "

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/actions";
@@ -11,14 +11,6 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
   const userData = useSelector((state) => state.auth.userData);
   const dispatch = useDispatch();
   const [isAdmin, setIsAdmin] = useState();
-  const inputRef = useRef(null);
-
-  useLayoutEffect(() => {
-    // Focus the "Nom" input when the component mounts
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [userId]);
 
   useEffect(() => {
     // Fetch user data
@@ -96,7 +88,16 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
   }
 
   return (
-    <div className="pt-5">
+    <div
+      className="pt-5 pb-3"
+      style={{
+        position: "sticky",
+        top: 0,
+        height: "100vh",
+        overflowY: "auto",
+        
+      }}
+    >
       <h2 className="mb-4 text-center">Éditer l'utilisateur</h2>
       <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 pe-3">
         <div>
@@ -110,7 +111,6 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
             id="nom"
             placeholder="Nom"
             value={formData.nom || ""}
-            ref={inputRef} // Ref applied here
           />
         </div>
         <div>

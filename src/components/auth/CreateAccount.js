@@ -22,6 +22,7 @@ function Formulaire() {
     MotDePasse: "",
     confirmationMotDePasse: "",
     general: "",
+    age: "",
   });
   const [countries, setCountries] = useState([]);
   const [currencies, setCurrencies] = useState([]);
@@ -101,6 +102,10 @@ function Formulaire() {
         "Le mot de passe doit contenir un caractère spécial";
       isValid = false;
     }
+    if (formData.age < 10) {
+      newErrors.age = "Vous devez être agé de 10 ans au minimum";
+      isValid = false;
+    }
 
     if (formData.MotDePasse !== confirmationMotDePasse) {
       newErrors.confirmationMotDePasse =
@@ -123,8 +128,9 @@ function Formulaire() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-    setErrors((prev) => ({ ...prev, [name]: "", general: "" }));
+    setErrors((prev) => ({ ...prev, [name]: "", general: "", age: "" }));
   };
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
@@ -214,6 +220,7 @@ function Formulaire() {
             value={formData.age}
             className="form-control"
           />
+          {errors.age && <div className="text-danger">{errors.age}</div>}
         </div>
         <div>
           <input
@@ -249,7 +256,7 @@ function Formulaire() {
         <div>
           <input
             onInput={handleConfiMdp}
-            name="ConfiMotDePasse"
+            name="confirmationMotDePasse"
             placeholder="Confirmer le nouveau mot de passe"
             value={confirmationMotDePasse}
             type="password"

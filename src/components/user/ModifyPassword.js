@@ -78,8 +78,8 @@ function ModifyPassword() {
 
   return (
     <div className="px-3 pt-5">
-      <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 col-4">
         <h2 className="mb-4">Changer votre mot de passe</h2>
+      <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 col-4">
         <div>
           <input
             onInput={handleChange}

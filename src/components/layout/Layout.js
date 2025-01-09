@@ -13,7 +13,7 @@ function Layout() {
         <Aside />
         <div className=" bg-light container-fluid">
           <main
-            className="flex-grow-1 mb-5 mt-3 bg-white rounded-4"
+            className="flex-grow-1 mb-5 mt-3 bg-white shadow-sm rounded-4"
             style={{ minHeight: "100vh" }}
           >
             <Outlet />

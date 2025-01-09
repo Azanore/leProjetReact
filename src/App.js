@@ -26,59 +26,87 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   const isAdmin = useSelector((state) => state.auth.userData.admin);
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Auth routes */}
-        <Route path="/" index element={<Login />} />
-        <Route path="/register" element={<Formulaire />} />
-        {/* Dashboard routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
+    <>
+      <style>
+        {`
+          /* Personnalisation de la barre de défilement pour tous les éléments de la page */
+          ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
           }
-        >
-          <Route index element={<Accueil />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="appearance" element={<ModifyColor />} />
-          <Route path="password" element={<ModifyPassword />} />
+          ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+          }
+          ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
 
-          {/* Admin routes */}
-          {isAdmin && (
-            <Route path="users">
-              <Route index element={<UsersList />} />
-              <Route path="new" element={<AddUser />} />
-            </Route>
-          )}
+          /* Pour Firefox */
+          * {
+            scrollbar-width: thin;
+            scrollbar-color: #888 #f1f1f1;
+          }
+        `}
+      </style>
+      <BrowserRouter>
+        <Routes>
+          {/* Auth routes */}
+          <Route path="/" index element={<Login />} />
+          <Route path="/register" element={<Formulaire />} />
+          {/* Dashboard routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Accueil />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="appearance" element={<ModifyColor />} />
+            <Route path="password" element={<ModifyPassword />} />
 
-          {/* Request routes */}
-          <Route path="requests">
-            {!isAdmin && (
-              <>
-                <Route path="new" element={<RequestUserAdd />} />
-                <Route path="user" element={<RequestUserShow />} />
-              </>
+            {/* Admin routes */}
+            {isAdmin && (
+              <Route path="users">
+                <Route index element={<UsersList />} />
+                <Route path="new" element={<AddUser />} />
+              </Route>
             )}
-            {isAdmin && <Route path="admin" element={<RequestAdminShow />} />}
-          </Route>
-        </Route>
 
-        {/* Error routes */}
-        <Route path="/error" element={<ErrorPage />} />
-        <Route
-          path="*"
-          element={
-            <ErrorPage
-              title="Page Not Found"
-              message="The page you're looking for doesn't exist."
-              errorCode="404"
-            />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+            {/* Request routes */}
+            <Route path="requests">
+              {!isAdmin && (
+                <>
+                  <Route path="new" element={<RequestUserAdd />} />
+                  <Route path="user" element={<RequestUserShow />} />
+                </>
+              )}
+              {isAdmin && <Route path="admin" element={<RequestAdminShow />} />}
+            </Route>
+          </Route>
+
+          {/* Error routes */}
+          <Route path="/error" element={<ErrorPage />} />
+          <Route
+            path="*"
+            element={
+              <ErrorPage
+                title="Page Not Found"
+                message="The page you're looking for doesn't exist."
+                errorCode="404"
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

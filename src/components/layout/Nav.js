@@ -5,12 +5,12 @@ function Nav() {
   const isAdmin = userData.admin;
 
   return (
-    <nav className={`bg-dark shadow-sm pt-2`}>
+    <nav className={`bg-dark shadow-sm pt-2 rounded-bottom-3`}>
       <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
         <li>
           <Link
             to="/dashboard"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
           >
             Accueil
           </Link>
@@ -18,7 +18,7 @@ function Nav() {
         <li>
           <Link
             to="profile"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
           >
             Mon profil
           </Link>
@@ -26,7 +26,7 @@ function Nav() {
         <li>
           <Link
             to="appearance"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
           >
             Personnaliser l'apparence
           </Link>
@@ -34,7 +34,7 @@ function Nav() {
         <li>
           <Link
             to="password"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
           >
             Changer mon mot de passe
           </Link>
@@ -43,7 +43,7 @@ function Nav() {
           <li>
             <Link
               to="users"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
             >
               Gestion des utilisateurs
             </Link>
@@ -53,7 +53,7 @@ function Nav() {
           <li>
             <Link
               to="users/new"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
             >
               Ajouter un utilisateur
             </Link>
@@ -63,7 +63,7 @@ function Nav() {
           <li>
             <Link
               to="requests/new"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
             >
               Soumettre une demande
             </Link>
@@ -73,7 +73,7 @@ function Nav() {
           <li>
             <Link
               to="requests/user"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
             >
               Mes demandes
             </Link>
@@ -83,7 +83,7 @@ function Nav() {
           <li>
             <Link
               to="requests/admin"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-bold`}
+              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
             >
               Gestion des demandes
             </Link>

@@ -11,7 +11,12 @@ function UserList({
 }) {
   const userData = useSelector((state) => state.auth.userData);
   return (
-    <tr className={id === userData.id && `table-${userData.couleur} border-bottom-0 border-top-0 border-2  border-${userData.couleur}`}>
+    <tr
+      className={
+        id === userData.id &&
+        `table-${userData.couleur} border-bottom-0 border-top-0 border-2  border-${userData.couleur}`
+      }
+    >
       <td>
         <img
           src={photo}
@@ -29,18 +34,19 @@ function UserList({
       <td className="text-center">
         <div className="d-flex justify-content-center gap-2">
           <button
+            onClick={() => onDetailsClick(id)}
+            className="btn btn-outline-primary btn-sm"
+          >
+            Détails
+          </button>
+          <button
             onClick={() => onModifyClick(id)}
             className="btn btn-success btn-sm"
             disabled={admin && id !== userData.id}
           >
             Modifier
           </button>
-          <button
-            onClick={() => onDetailsClick(id)}
-            className="btn btn-outline-dark btn-sm"
-          >
-            Détails
-          </button>
+
           <UserDelete
             userId={id}
             fetchData={fetchData}

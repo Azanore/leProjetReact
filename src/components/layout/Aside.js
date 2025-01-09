@@ -12,10 +12,18 @@ function Aside() {
   };
 
   return (
-    <nav className="bg-light py-4 shadow-sm d-flex gap-0">
+    <nav
+      className="bg-light py-4 d-flex gap-0"
+      style={{
+        position: "sticky",
+        top: 0,
+        height: "100vh",
+        overflowY: "auto",
+      }}
+    >
       <button
         onClick={toggleMenu}
-        className="btn btn-dark fw-bold btn-sm rounded-0 rounded-end-2 "
+        className="btn btn-dark p-1 btn-sm rounded-0 rounded-end-2 "
         aria-expanded={isOpen}
       ></button>
       <ul
@@ -26,7 +34,7 @@ function Aside() {
         <li>
           <Link
             to="/dashboard"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
           >
             Accueil
           </Link>
@@ -34,7 +42,7 @@ function Aside() {
         <li>
           <Link
             to="profile"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
           >
             Mon profil
           </Link>
@@ -42,7 +50,7 @@ function Aside() {
         <li>
           <Link
             to="appearance"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
           >
             Personnaliser l'apparence
           </Link>
@@ -50,7 +58,7 @@ function Aside() {
         <li>
           <Link
             to="password"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
           >
             Changer mon mot de passe
           </Link>
@@ -59,7 +67,7 @@ function Aside() {
           <li>
             <Link
               to="users"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
             >
               Gestion des utilisateurs
             </Link>
@@ -69,7 +77,7 @@ function Aside() {
           <li>
             <Link
               to="users/new"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
             >
               Ajouter un utilisateur
             </Link>
@@ -79,7 +87,7 @@ function Aside() {
           <li>
             <Link
               to="requests/new"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
             >
               Soumettre une demande
             </Link>
@@ -89,7 +97,7 @@ function Aside() {
           <li>
             <Link
               to="requests/user"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
             >
               Mes demandes
             </Link>
@@ -99,7 +107,7 @@ function Aside() {
           <li>
             <Link
               to="requests/admin"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-bold`}
+              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
             >
               Gestion des demandes
             </Link>
