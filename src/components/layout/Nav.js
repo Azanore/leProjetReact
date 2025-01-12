@@ -1,96 +1,89 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 function Nav() {
   const userData = useSelector((state) => state.auth.userData);
   const isAdmin = userData.admin;
 
+  const renderNavLink = (to, label) => (
+    <NavLink
+      to={to}
+      end
+      className={({ isActive }) =>
+        isActive
+          ? `btn btn-${userData.couleur} btn-sm fw-medium`
+          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium`
+      }
+    >
+      {label}
+    </NavLink>
+  );
+
   return (
-    <nav className={`bg-dark shadow-sm pt-2 rounded-bottom-3`}>
-      <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
-        <li>
-          <Link
-            to="/dashboard"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
+    <>
+      {/* Mobile Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+        <div className="container-fluid">
+       
+          <button
+            className="navbar-toggler "
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobileNavbar"
+            aria-controls="mobileNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            Accueil
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="profile"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-          >
-            Mon profil
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="appearance"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-          >
-            Personnaliser l'apparence
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="password"
-            className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-          >
-            Changer mon mot de passe
-          </Link>
-        </li>
-        {isAdmin && (
-          <li>
-            <Link
-              to="users"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-            >
-              Gestion des utilisateurs
-            </Link>
-          </li>
-        )}
-        {isAdmin && (
-          <li>
-            <Link
-              to="users/new"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-            >
-              Ajouter un utilisateur
-            </Link>
-          </li>
-        )}
-        {!isAdmin && (
-          <li>
-            <Link
-              to="requests/new"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-            >
-              Soumettre une demande
-            </Link>
-          </li>
-        )}
-        {!isAdmin && (
-          <li>
-            <Link
-              to="requests/user"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-            >
-              Mes demandes
-            </Link>
-          </li>
-        )}
-        {isAdmin && (
-          <li>
-            <Link
-              to="requests/admin"
-              className={`btn btn-${userData.couleur} rounded-0 rounded-top-3 btn-sm fw-medium `}
-            >
-              Gestion des demandes
-            </Link>
-          </li>
-        )}
-      </ul>
-    </nav>
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse mt-3" id="mobileNavbar">
+            <ul className="navbar-nav ms-auto">
+              {renderNavLink("/dashboard", "Accueil")}
+              {renderNavLink("profile", "Mon Profil")}
+              {renderNavLink("appearance", "Personnaliser l'apparence")}
+              {renderNavLink("password", "Changer mon mot de passe")}
+              {renderNavLink("text", "Changer la police")}
+              {isAdmin ? (
+                <>
+                  {renderNavLink("users", "Gestion des utilisateurs")}
+                  {renderNavLink("users/new", "Ajouter un utilisateur")}
+                  {renderNavLink("requests/admin", "Gestion des demandes")}
+                </>
+              ) : (
+                <>
+                  {renderNavLink("requests/new", "Soumettre une demande")}
+                  {renderNavLink("requests/user", "Mes demandes")}
+                </>
+              )}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {/* Desktop Navbar */}
+      <nav className="pt-2 bg-light rounded-bottom-3 pb-1 d-none d-lg-block">
+        <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
+          <li>{renderNavLink("/dashboard", "Accueil")}</li>
+          <li>{renderNavLink("profile", "Mon Profil")}</li>
+          <li>{renderNavLink("appearance", "Personnaliser l'apparence")}</li>
+          <li>{renderNavLink("password", "Changer mon mot de passe")}</li>
+          <li>{renderNavLink("text", "Changer la police")}</li>
+          {isAdmin && (
+            <>
+              <li>{renderNavLink("users", "Gestion des utilisateurs")}</li>
+              <li>{renderNavLink("users/new", "Ajouter un utilisateur")}</li>
+              <li>{renderNavLink("requests/admin", "Gestion des demandes")}</li>
+            </>
+          )}
+          {!isAdmin && (
+            <>
+              <li>{renderNavLink("requests/new", "Soumettre une demande")}</li>
+              <li>{renderNavLink("requests/user", "Mes demandes")}</li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </>
   );
 }
 

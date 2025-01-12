@@ -12,8 +12,6 @@ export const deleteDemande = (userId, demandeId) => {
         demandes,
       })
       .then((response) => {
-        console.log("La demande a été supprimée avec succès : ", response.data);
-
         dispatch({
           type: "DELETE_DEMANDE",
           payload: demandeId,
@@ -37,10 +35,6 @@ export const addDemande = (newDemande, userData, userId) => {
       .then((response) => {
         // Dispatch an action to add the demande locally
         dispatch({ type: "ADD_DEMANDE", payload: newDemande });
-        console.log(
-          "Votre demande a été soumise avec succès :",
-          response.data.demandes
-        );
       })
       .catch((error) => {
         console.error(
@@ -157,6 +151,25 @@ export const updateUser = (userId, userData, loggedInUserId) => {
           type: "UPDATE_USER_FAILURE",
           error: error.message,
         });
+      });
+  };
+};
+export const changeFont = (newFont, userId) => {
+  return (dispatch) => {
+    return axios
+      .put(`https://675afd529ce247eb19354af3.mockapi.io/users/${userId}`, {
+        police: newFont,
+      })
+      .then(() => {
+        dispatch({ type: "CHANGERPOLICE", payload: newFont });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "SET_ERROR",
+          payload: "Erreur lors de la mise à jour de la police.",
+        });
+        console.error("Erreur lors de la mise à jour de la police :", err);
+        throw err; // Propagate error for handling in the component
       });
   };
 };

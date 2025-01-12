@@ -56,6 +56,7 @@ function ModifyPassword() {
     setErrors(tempErrors);
     return isValid;
   };
+
   const navigate = useNavigate();
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -64,72 +65,99 @@ function ModifyPassword() {
       return;
     }
 
-    // Dispatch the Thunk action to handle the password change and get the promise
     dispatch(changePassword(userData.id, passwords.newPassword))
       .then(() => {
-        // Navigate after the password change and logout are complete
         navigate("/");
       })
       .catch((error) => {
-        // Handle any errors during the password change process
         console.error("Error during password change:", error);
       });
   };
 
   return (
-    <div className="px-3 pt-5">
-        <h2 className="mb-4">Changer votre mot de passe</h2>
-      <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 col-4">
-        <div>
-          <input
-            onInput={handleChange}
-            name="currentPassword"
-            placeholder="Mot de passe actuel"
-            type="password"
-            value={passwords.currentPassword}
-            className={`form-control ${
-              errors.currentPassword ? "is-invalid" : ""
-            }`}
-          />
-          {errors.currentPassword && (
-            <div className="invalid-feedback">{errors.currentPassword}</div>
-          )}
-        </div>
+    <div className="container py-5">
+              <h2 className="text-center mb-4">Changer votre mot de passe</h2>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-5">
+          <div className="card border-0">
+            <div className="card-body px-0 py-0">
+              <form
+                onSubmit={handleSubmit}
+                className="d-flex flex-column gap-3"
+              >
+                <div className="form-floating">
+                  <input
+                    onInput={handleChange}
+                    name="currentPassword"
+                    placeholder="Mot de passe actuel"
+                    type="password"
+                    value={passwords.currentPassword}
+                    className={`form-control border-0 shadow-sm bg bg-light ${
+                      errors.currentPassword ? "is-invalid" : ""
+                    }`}
+                    id="currentPassword"
+                  />
+                  <label htmlFor="currentPassword">Mot de passe actuel</label>
+                  {errors.currentPassword && (
+                    <div className="invalid-feedback">
+                      {errors.currentPassword}
+                    </div>
+                  )}
+                </div>
 
-        <div>
-          <input
-            onInput={handleChange}
-            name="newPassword"
-            placeholder="Nouveau mot de passe"
-            type="password"
-            value={passwords.newPassword}
-            className={`form-control ${errors.newPassword ? "is-invalid" : ""}`}
-          />
-          {errors.newPassword && (
-            <div className="invalid-feedback">{errors.newPassword}</div>
-          )}
-        </div>
+                <div className="form-floating">
+                  <input
+                    onInput={handleChange}
+                    name="newPassword"
+                    placeholder="Nouveau mot de passe"
+                    type="password"
+                    value={passwords.newPassword}
+                    className={`form-control border-0 shadow-sm bg bg-light ${
+                      errors.newPassword ? "is-invalid" : ""
+                    }`}
+                    id="newPassword"
+                  />
+                  <label htmlFor="newPassword">Nouveau mot de passe</label>
+                  {errors.newPassword && (
+                    <div className="invalid-feedback">{errors.newPassword}</div>
+                  )}
+                </div>
 
-        <div>
-          <input
-            onInput={handleChange}
-            name="confirmPassword"
-            placeholder="Confirmer le nouveau mot de passe"
-            type="password"
-            value={passwords.confirmPassword}
-            className={`form-control ${
-              errors.confirmPassword ? "is-invalid" : ""
-            }`}
-          />
-          {errors.confirmPassword && (
-            <div className="invalid-feedback">{errors.confirmPassword}</div>
-          )}
-        </div>
+                <div className="form-floating">
+                  <input
+                    onInput={handleChange}
+                    name="confirmPassword"
+                    placeholder="Confirmer le nouveau mot de passe"
+                    type="password"
+                    value={passwords.confirmPassword}
+                    className={`form-control border-0 shadow-sm bg bg-light ${
+                      errors.confirmPassword ? "is-invalid" : ""
+                    }`}
+                    id="confirmPassword"
+                  />
+                  <label htmlFor="confirmPassword">
+                    Confirmer le nouveau mot de passe
+                  </label>
+                  {errors.confirmPassword && (
+                    <div className="invalid-feedback">
+                      {errors.confirmPassword}
+                    </div>
+                  )}
+                </div>
 
-        <button type="submit" className={`btn btn-${userData.couleur}`}>
-          Soumettre
-        </button>
-      </form>
+                <div className="d-grid mt-2">
+                  <button
+                    type="submit"
+                    className={`btn btn-${userData.couleur}`}
+                  >
+                    Modifier le mot de passe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

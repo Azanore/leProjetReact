@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {produce} from "immer";
+import { produce } from "immer";
 
 // Constants for action types
 const LOGIN = "LOGIN";
@@ -9,6 +9,7 @@ const ADD_DEMANDE = "ADD_DEMANDE";
 const DELETE_DEMANDE = "DELETE_DEMANDE"; // Nouvelle action pour supprimer la demande
 const CHANGER_MOT_DE_PASSE = "CHANGER_MOT_DE_PASSE";
 const UPDATE_USER = "UPDATE_USER";
+const CHANGERPOLICE = "CHANGERPOLICE";
 
 const authReducer = (state = { userData: "" }, action) => {
   return produce(state, (draft) => {
@@ -24,6 +25,9 @@ const authReducer = (state = { userData: "" }, action) => {
         break;
       case CHANGERCOULEUR:
         draft.userData.couleur = action.payload;
+        break;
+      case CHANGERPOLICE:
+        draft.userData.police = action.payload;
         break;
       case ADD_DEMANDE:
         draft.userData.demandes.push(action.payload); // Ajouter la nouvelle demande

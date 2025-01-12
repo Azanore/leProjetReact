@@ -11,13 +11,8 @@ function UserList({
 }) {
   const userData = useSelector((state) => state.auth.userData);
   return (
-    <tr
-      className={
-        id === userData.id &&
-        `table-${userData.couleur} border-bottom-0 border-top-0 border-2  border-${userData.couleur}`
-      }
-    >
-      <td>
+    <tr className={id === userData.id && `table-${userData.couleur}`}>
+      <td className="d-sm-table-cell d-none">
         <img
           src={photo}
           alt="Profil"
@@ -26,8 +21,8 @@ function UserList({
         />
       </td>
       <td>{nom}</td>
-      <td>{prenom}</td>
-      <td>{Pays}</td>
+      <td className="d-lg-table-cell d-none">{prenom}</td>
+      <td className="d-xl-table-cell d-none">{Pays}</td>
       <td className={admin && "fw-bold text-success"}>
         {admin ? "Admin" : "Utilisateur"}
       </td>

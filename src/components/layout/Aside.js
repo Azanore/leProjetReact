@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -12,109 +12,169 @@ function Aside() {
   };
 
   return (
-    <nav
-      className="bg-light py-4 d-flex gap-0"
-      style={{
-        position: "sticky",
-        top: 0,
-        height: "100vh",
-        overflowY: "auto",
-      }}
-    >
-      <button
-        onClick={toggleMenu}
-        className="btn btn-dark p-1 btn-sm rounded-0 rounded-end-2 "
-        aria-expanded={isOpen}
-      ></button>
-      <ul
-        className={`list-unstyled d-flex flex-column gap-2 mt-4  ${
-          isOpen ? "" : "d-none"
-        }`}
+    <div className="bg-light pt-3 pb-5 rounded d-xl-block d-none">
+      <nav
+        className="bg-white  rounded-end-4 shadow-sm  d-flex gap-0"
+        style={{
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          overflowY: "auto",
+        }}
       >
-        <li>
-          <Link
-            to="/dashboard"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
-          >
-            Accueil
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="profile"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
-          >
-            Mon profil
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="appearance"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
-          >
-            Personnaliser l'apparence
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="password"
-            className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
-          >
-            Changer mon mot de passe
-          </Link>
-        </li>
-        {isAdmin && (
+        <button
+          onClick={toggleMenu}
+          className={`btn btn-${userData.couleur}  p-1 btn-sm rounded-0 rounded-end-2 `}
+          aria-expanded={isOpen}
+        ></button>
+        <ul
+          className={`list-unstyled d-flex flex-column gap-2 mt-4  ${
+            isOpen ? "" : "d-none"
+          }`}
+        >
           <li>
-            <Link
-              to="users"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
+            <NavLink
+              to="/dashboard"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                  : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+              }
             >
-              Gestion des utilisateurs
-            </Link>
+              Accueil
+            </NavLink>
           </li>
-        )}
-        {isAdmin && (
           <li>
-            <Link
-              to="users/new"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
+            <NavLink
+              to="profile"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                  : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+              }
             >
-              Ajouter un utilisateur
-            </Link>
+              Mon profil
+            </NavLink>
           </li>
-        )}
-        {!isAdmin && (
           <li>
-            <Link
-              to="requests/new"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
+            <NavLink
+              to="appearance"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                  : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+              }
             >
-              Soumettre une demande
-            </Link>
+              Personnaliser l'apparence
+            </NavLink>
           </li>
-        )}
-        {!isAdmin && (
           <li>
-            <Link
-              to="requests/user"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
+            <NavLink
+              to="password"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                  : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+              }
             >
-              Mes demandes
-            </Link>
+              Changer mon mot de passe
+            </NavLink>
           </li>
-        )}
-        {isAdmin && (
           <li>
-            <Link
-              to="requests/admin"
-              className={`btn btn-dark text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`}
+            <NavLink
+              to="text"
+              end
+              className={({ isActive }) =>
+                isActive
+                  ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                  : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+              }
             >
-              Gestion des demandes
-            </Link>
+              Changer la police
+            </NavLink>
           </li>
-        )}
-      </ul>
-    </nav>
+          {isAdmin && (
+            <li>
+              <NavLink
+                to="users"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                    : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                }
+              >
+                Gestion des utilisateurs
+              </NavLink>
+            </li>
+          )}
+          {isAdmin && (
+            <li>
+              <NavLink
+                to="users/new"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                    : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                }
+              >
+                Ajouter un utilisateur
+              </NavLink>
+            </li>
+          )}
+          {!isAdmin && (
+            <li>
+              <NavLink
+                to="requests/new"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                    : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                }
+              >
+                Soumettre une demande
+              </NavLink>
+            </li>
+          )}
+          {!isAdmin && (
+            <li>
+              <NavLink
+                to="requests/user"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                    : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                }
+              >
+                Mes demandes
+              </NavLink>
+            </li>
+          )}
+          {isAdmin && (
+            <li>
+              <NavLink
+                to="requests/admin"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? `btn btn-${userData.couleur}  btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                    : `btn  text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium`
+                }
+              >
+                Gestion des demandes
+              </NavLink>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </div>
   );
 }
 

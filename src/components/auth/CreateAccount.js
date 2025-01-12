@@ -192,7 +192,7 @@ function Formulaire() {
             style={{ width: "120px", height: "auto" }}
           />
           <h2 className="text-center mb-4">Créer un compte</h2>
-        </div>{" "}
+        </div>
         <div>
           <input
             onInput={handleIdentifiants}

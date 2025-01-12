@@ -13,7 +13,6 @@ function ModifyColor() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     if (newColor) {
-      // Dispatch the action and handle the success/error locally
       dispatch(changeColor(newColor, userData.id))
         .then(() => {
           setSuccess(`Succès ! La couleur '${realColor}' a été appliquée !`);
@@ -27,93 +26,82 @@ function ModifyColor() {
   };
 
   const colors = [
-    { id: "primary", fr: "Bleu" },
+    { id: "dark", fr: "Noir" },
     { id: "secondary", fr: "Gris" },
+    { id: "primary", fr: "Bleu" },
     { id: "success", fr: "Vert" },
     { id: "danger", fr: "Rouge" },
-    { id: "warning", fr: "Ambre" },
     { id: "info", fr: "Bleu clair" },
   ];
 
-  const colorPairs = [];
-  for (let i = 0; i < colors.length; i += 2) {
-    colorPairs.push(colors.slice(i, i + 2));
-  }
-
   return (
-    <div className="  ms-3 py-5">
-      <div className=" justify-content-center">
-        <div>
+    <div className="container py-5">
+      <h2 className="text-center ">Changer la couleur de l'interface</h2>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
           <form onSubmit={handleSubmit}>
-            <h2 className=" mb-4">Changer la couleur de l'interface</h2>
-            <div className="col-4">
-              <div className="mb-5">
-                {colorPairs.map((pair, index) => (
-                  <div key={index} className="row g-4 mb-4">
-                    {pair.map((color) => (
-                      <div key={color.id} className="col-12 col-sm-6">
+            <div className="card border-0 ">
+              <div className="card-body p-4">
+                <div className="row g-3 mb-4">
+                  {colors.map((color) => (
+                    <div key={color.id} className="col-12 col-sm-6">
+                      <div
+                        className={`p-3 text-center rounded-3 ${
+                          newColor === color.id
+                            ? `bg-${color.id} text-white`
+                            : `border bg-light border-${color.id}`
+                        }`}
+                        onClick={() => {
+                          setNewColor(color.id);
+                          setRealColor(color.fr);
+                          setError("");
+                          setSuccess("");
+                        }}
+                        style={{
+                          cursor: "pointer",
+                        }}
+                      >
                         <div
-                          className={` ${
-                            newColor === color.id
-                              ? `bg-${color.id} rounded-start-4 rounded-end-2 text-white`
-                              : ""
+                          className="rounded-circle mb-2"
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            backgroundColor: `var(--bs-${color.id})`,
+                          }}
+                        ></div>
+                        <span
+                          className={`d-block fs-6 ${
+                            newColor === color.id ? "fw-semibold" : ""
                           }`}
                         >
-                          <div className="d-flex align-items-center gap-4">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setNewColor(color.id);
-                                setRealColor(color.fr);
-                                error !== "" && setError("");
-                                setSuccess("");
-                              }}
-                              className={`btn ${
-                                newColor === color.id
-                                  ? "border-5 border-white "
-                                  : "border"
-                              }`}
-                              style={{
-                                width: "36px",
-                                height: "36px",
-                                backgroundColor:
-                                  color.id === "transparent"
-                                    ? "transparent"
-                                    : `var(--bs-${color.id})`,
-                                minWidth: "36px",
-                              }}
-                              aria-label={`Sélectionner la couleur ${color.fr}`}
-                            />
-                            <span
-                              className={`fs-5  ${
-                                newColor === color.id ? "fw-semibold" : ""
-                              }`}
-                            >
-                              {color.fr}
-                            </span>
-                          </div>
-                        </div>
+                          {color.fr}
+                        </span>
                       </div>
-                    ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="d-grid gap-2">
+                  <button
+                    type="submit"
+                    className={`btn btn-${userData.couleur}`}
+                  >
+                    Appliquer la couleur
+                  </button>
+                </div>
+                {error && (
+                  <div className="alert alert-danger mt-3 mb-0" role="alert">
+                    {error}
                   </div>
-                ))}
+                )}
+                {success && (
+                  <div
+                    className={`alert alert-${userData.couleur} mt-3 mb-0`}
+                    role="alert"
+                  >
+                    {success}
+                  </div>
+                )}
               </div>
-              <div className="d-grid my-3">
-                <button type="submit" className={`btn btn-${userData.couleur}`}>
-                  Appliquer la couleur
-                </button>
-              </div>
-              {error && (
-                <div className="alert alert-danger mb-4" role="alert">
-                  {error}
-                </div>
-              )}
-
-              {success && (
-                <div className={`alert alert-${userData.couleur}`} role="alert">
-                  {success}
-                </div>
-              )}
             </div>
           </form>
         </div>

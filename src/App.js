@@ -13,6 +13,7 @@ import RequestAdminShow from "./components/requests/RequestAdminShow";
 import ModifyPassword from "./components/user/ModifyPassword";
 import ErrorPage from "./components/errors/Error";
 import { useSelector } from "react-redux";
+import ModifyFont from "./components/user/ModifyFont";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = useSelector((state) => Boolean(state.auth.userData));
@@ -25,6 +26,8 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   const isAdmin = useSelector((state) => state.auth.userData.admin);
+  const police = useSelector((state) => state.auth.userData.police);
+
   return (
     <>
       <style>
@@ -51,6 +54,7 @@ function App() {
             scrollbar-width: thin;
             scrollbar-color: #888 #f1f1f1;
           }
+           * {font-family:${police}}
         `}
       </style>
       <BrowserRouter>
@@ -71,6 +75,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="appearance" element={<ModifyColor />} />
             <Route path="password" element={<ModifyPassword />} />
+            <Route path="text" element={<ModifyFont />} />
 
             {/* Admin routes */}
             {isAdmin && (

@@ -10,7 +10,7 @@ function Header() {
   };
   return (
     <header
-      className={`d-flex justify-content-between align-items-center p-2 bg-dark text-white shadow-sm`}
+      className={`d-flex bg-light justify-content-between align-items-center p-2 text-white`}
     >
       <div className="d-flex align-items-center">
         <img
@@ -19,7 +19,9 @@ function Header() {
           className="img-fluid rounded ms-2"
           style={{ width: "48px" }}
         />
-        <h1 className={`ms-3 mb-0 text-${userData.couleur}`}>MonCoin</h1>
+        <h1 className={`ms-3 mb-0  d-none d-lg-block text-${userData.couleur}`}>
+          MonCoin
+        </h1>
       </div>
 
       {userData && (

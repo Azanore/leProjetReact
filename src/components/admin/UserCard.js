@@ -23,7 +23,7 @@ const UserCard = ({
           <img
             src={photo}
             alt={`${prenom} ${nom}`}
-            className="card-img-top object-fit-cover rounded-bottom-5 p-3 "
+            className="card-img-top object-fit-cover rounded-bottom-5 p-md-3 "
             style={{ height: "200px" }}
           />
           {admin && (
