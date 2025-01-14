@@ -182,8 +182,9 @@ function Formulaire() {
     <div className="container mt-5">
       <form
         onSubmit={handleSubmit}
-        className="col-md-5 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 d-flex flex-column gap-3"
+        className="col-md-10 col-lg-8 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 d-flex flex-column gap-3"
       >
+        {/* Logo and Heading */}
         <div className="text-center mb-4">
           <img
             src="/logo.svg"
@@ -191,121 +192,185 @@ function Formulaire() {
             className="mb-3 rounded shadow"
             style={{ width: "120px", height: "auto" }}
           />
-          <h2 className="text-center mb-4">Créer un compte</h2>
+          <h2>Créer un compte</h2>
         </div>
-        <div>
-          <input
-            onInput={handleIdentifiants}
-            name="nom"
-            placeholder="Nom"
-            value={formData.nom}
-            className="form-control"
-          />
+
+        {/* Nom et Prénom */}
+        <div className="row g-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control bg-light border-0 shadow-sm"
+                id="nom"
+                name="nom"
+                placeholder="Nom"
+                value={formData.nom}
+                onInput={handleIdentifiants}
+              />
+              <label htmlFor="nom">Nom</label>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control bg-light border-0 shadow-sm"
+                id="prenom"
+                name="prenom"
+                placeholder="Prénom"
+                value={formData.prenom}
+                onInput={handleIdentifiants}
+              />
+              <label htmlFor="prenom">Prénom</label>
+            </div>
+          </div>
         </div>
-        <div>
-          <input
-            onInput={handleIdentifiants}
-            name="prenom"
-            placeholder="Prénom"
-            value={formData.prenom}
-            className="form-control"
-          />
+
+        {/* Âge et Pseudo */}
+        <div className="row g-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="number"
+                className="form-control bg-light border-0 shadow-sm"
+                id="age"
+                name="age"
+                placeholder="Âge"
+                value={formData.age}
+                onInput={handleIdentifiants}
+              />
+              <label htmlFor="age">Âge</label>
+              {errors.age && <div className="text-danger">{errors.age}</div>}
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="text"
+                className="form-control bg-light border-0 shadow-sm"
+                id="pseudo"
+                name="pseudo"
+                placeholder="Pseudo"
+                value={formData.pseudo}
+                onInput={handleIdentifiants}
+              />
+              <label htmlFor="pseudo">Pseudo</label>
+            </div>
+          </div>
         </div>
-        <div>
-          <input
-            onInput={handleIdentifiants}
-            name="age"
-            placeholder="Âge"
-            type="number"
-            value={formData.age}
-            className="form-control"
-          />
-          {errors.age && <div className="text-danger">{errors.age}</div>}
+
+        {/* Email et Mot de Passe */}
+        <div className="row g-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="password"
+                className="form-control bg-light border-0 shadow-sm"
+                id="MotDePasse"
+                name="MotDePasse"
+                placeholder="Mot de passe"
+                value={formData.MotDePasse}
+                onInput={handleIdentifiants}
+              />
+              <label htmlFor="MotDePasse">Mot de passe</label>
+              {errors.MotDePasse && (
+                <div className="text-danger">{errors.MotDePasse}</div>
+              )}
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-floating">
+              <input
+                type="password"
+                className="form-control bg-light border-0 shadow-sm"
+                id="confirmationMotDePasse"
+                name="confirmationMotDePasse"
+                placeholder="Confirmer le mot de passe"
+                value={confirmationMotDePasse}
+                onInput={handleConfiMdp}
+              />
+              <label htmlFor="confirmationMotDePasse">
+                Confirmer le mot de passe
+              </label>
+              {errors.confirmationMotDePasse && (
+                <div className="text-danger">
+                  {errors.confirmationMotDePasse}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-        <div>
+
+        {/* Confirmation du mot de passe */}
+
+        <div className="form-floating">
           <input
-            onInput={handleIdentifiants}
-            name="pseudo"
-            placeholder="Pseudo"
-            value={formData.pseudo}
-            className="form-control"
-          />
-        </div>
-        <div>
-          <input
-            onInput={handleIdentifiants}
+            type="email"
+            className="form-control bg-light border-0 shadow-sm"
+            id="email"
             name="email"
             placeholder="Email"
             value={formData.email}
-            className="form-control"
-          />
-        </div>
-        <div>
-          <input
             onInput={handleIdentifiants}
-            name="MotDePasse"
-            placeholder="Mot de passe"
-            value={formData.MotDePasse}
-            type="password"
-            className="form-control"
           />
-          {errors.MotDePasse && (
-            <div className="text-danger">{errors.MotDePasse}</div>
-          )}
+          <label htmlFor="email">Email</label>
         </div>
-        <div>
-          <input
-            onInput={handleConfiMdp}
-            name="confirmationMotDePasse"
-            placeholder="Confirmer le nouveau mot de passe"
-            value={confirmationMotDePasse}
-            type="password"
-            className="form-control"
-          />
-          {errors.confirmationMotDePasse && (
-            <div className="text-danger">{errors.confirmationMotDePasse}</div>
-          )}
+
+        {/* Devise et Pays */}
+        <div className="row g-3">
+          <div className="col-md-6">
+            <div className="form-floating">
+              <select
+                className="form-select bg-light border-0 shadow-sm"
+                id="Devise"
+                name="Devise"
+                value={formData.Devise || ""}
+                onChange={handleIdentifiants}
+              >
+                <option value="" disabled>
+                  Sélectionner une devise
+                </option>
+                {currencies.map(([name, symbol], index) => (
+                  <option key={index} value={name}>
+                    {name} ({symbol})
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="Devise">Devise</label>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-floating">
+              <select
+                className="form-select bg-light border-0 shadow-sm"
+                id="Pays"
+                name="Pays"
+                value={formData.Pays || ""}
+                onChange={handleIdentifiants}
+              >
+                <option value="" disabled>
+                  Sélectionner un pays
+                </option>
+                {countries.map((country, index) => (
+                  <option key={index} value={country}>
+                    {country}
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="Pays">Pays</label>
+            </div>
+          </div>
         </div>
-        <div>
+
+        {/* Couleur */}
+        <div className="form-floating">
           <select
-            className="form-select"
-            onChange={handleIdentifiants}
-            name="Devise"
-            value={formData.Devise || ""}
-          >
-            <option value="" disabled>
-              Sélectionner une devise
-            </option>
-            {currencies.map(([name, symbol], index) => (
-              <option key={index} value={name}>
-                {name} ({symbol})
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <select
-            className="form-select"
-            onChange={handleIdentifiants}
-            name="Pays"
-            value={formData.Pays || ""}
-          >
-            <option value="" disabled>
-              Sélectionner un pays
-            </option>
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <select
-            className="form-select"
-            onChange={handleIdentifiants}
+            className="form-select bg-light border-0 shadow-sm"
+            id="couleur"
             name="couleur"
             value={formData.couleur || ""}
+            onChange={handleIdentifiants}
           >
             <option value="" disabled>
               Sélectionner une couleur
@@ -314,18 +379,22 @@ function Formulaire() {
             <option value="secondary">Gris</option>
             <option value="success">Vert</option>
             <option value="danger">Rouge</option>
-            <option value="warning">Ambre</option>
+            <option value="dark">Noir</option>
             <option value="info">Bleu clair</option>
           </select>
+          <label htmlFor="couleur">Couleur préférée</label>
         </div>
-        <button type="submit" className="btn btn-primary">
-          S'inscrire
-        </button>
+
         {errors.general && (
-          <div className="alert mb-0 alert-danger" role="alert">
+          <div className="alert alert-danger text-center" role="alert">
             {errors.general}
           </div>
         )}
+        {/* Submit Button and Error Message */}
+        <button type="submit" className="btn btn-primary">
+          S'inscrire
+        </button>
+
         <div className="text-center">
           Vous avez déjà un compte ? <Link to="/">Se connecter</Link>
         </div>

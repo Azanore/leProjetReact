@@ -7,7 +7,6 @@ function Profile() {
     success: "Vert",
     danger: "Rouge",
     secondary: "Gris",
-    warning: "Ambre",
     primary: "Bleu",
     dark: "Noir",
   };

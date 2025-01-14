@@ -10,18 +10,16 @@ function Header() {
   };
   return (
     <header
-      className={`d-flex bg-light justify-content-between align-items-center p-2 text-white`}
+      className={`d-md-flex bg-light justify-content-between align-items-center p-2 text-white d-none`}
     >
       <div className="d-flex align-items-center">
         <img
           src="\logo.svg"
           alt="logo"
           className="img-fluid rounded ms-2"
-          style={{ width: "48px" }}
+          style={{ width: "4rem" }}
         />
-        <h1 className={`ms-3 mb-0  d-none d-lg-block text-${userData.couleur}`}>
-          MonCoin
-        </h1>
+        <h1 className={`ms-3 mb-0  d-none d-lg-block text-dark`}>MonCoin</h1>
       </div>
 
       {userData && (
@@ -35,7 +33,7 @@ function Header() {
             src={userData.photo}
             alt="User Avatar"
             className={`rounded-circle border border-1 border-${userData.couleur}`}
-            style={{ width: "40px", height: "40px" }}
+            style={{ width: "3rem", height: "3rem" }}
           />
           <button
             onClick={handleClick}

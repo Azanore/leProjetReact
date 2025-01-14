@@ -92,7 +92,7 @@ function RequestAdminShow() {
                       value={demande.status}
                       className={`form-select form-select-sm ${
                         demande.status === "en_attente"
-                          ? "text-warning"
+                          ? "text-secondary"
                           : demande.status === "approuvé"
                           ? "text-success"
                           : demande.status === "rejeté"

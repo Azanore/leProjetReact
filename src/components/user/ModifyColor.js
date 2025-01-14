@@ -80,6 +80,19 @@ function ModifyColor() {
                     </div>
                   ))}
                 </div>
+                {error && (
+                  <div className="alert alert-danger text-center" role="alert">
+                    {error}
+                  </div>
+                )}
+                {success && (
+                  <div
+                    className={`alert alert-${userData.couleur} text-center `}
+                    role="alert"
+                  >
+                    {success}
+                  </div>
+                )}
                 <div className="d-grid gap-2">
                   <button
                     type="submit"
@@ -88,19 +101,6 @@ function ModifyColor() {
                     Appliquer la couleur
                   </button>
                 </div>
-                {error && (
-                  <div className="alert alert-danger mt-3 mb-0" role="alert">
-                    {error}
-                  </div>
-                )}
-                {success && (
-                  <div
-                    className={`alert alert-${userData.couleur} mt-3 mb-0`}
-                    role="alert"
-                  >
-                    {success}
-                  </div>
-                )}
               </div>
             </div>
           </form>

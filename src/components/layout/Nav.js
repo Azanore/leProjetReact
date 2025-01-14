@@ -1,18 +1,23 @@
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Nav() {
   const userData = useSelector((state) => state.auth.userData);
   const isAdmin = userData.admin;
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleClick = async () => {
+    await navigate("", { replace: true });
+    dispatch({ type: "LOGOUT" });
+  };
   const renderNavLink = (to, label) => (
     <NavLink
       to={to}
       end
       className={({ isActive }) =>
         isActive
-          ? `btn btn-${userData.couleur} btn-sm fw-medium`
-          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium`
+          ? `btn btn-${userData.couleur} btn-sm fw-medium rounded-0`
+          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium rounded-0`
       }
     >
       {label}
@@ -22,9 +27,11 @@ function Nav() {
   return (
     <>
       {/* Mobile Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light d-lg-none">
+      <nav
+        className="navbar navbar-expand-lg navbar-light bg-light py-3 d-lg-none"
+        style={{ position: "sticky", top: "0px", zIndex: 1000 }}
+      >
         <div className="container-fluid">
-       
           <button
             className="navbar-toggler "
             type="button"
@@ -55,6 +62,15 @@ function Nav() {
                   {renderNavLink("requests/user", "Mes demandes")}
                 </>
               )}
+              <div className="nav-item d-flex justify-content-center bg-white">
+                <button
+                  onClick={handleClick}
+                  className={`btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium w-100`}
+                >
+                  Se déconnecter
+                  <i className="bi bi-box-arrow-right ms-2"></i>
+                </button>
+              </div>
             </ul>
           </div>
         </div>

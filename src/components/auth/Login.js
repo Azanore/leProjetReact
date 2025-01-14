@@ -13,7 +13,7 @@ function Login() {
   });
   const [tentativesAuth, setTentativesAuth] = useState(0);
   const [erreurs, setErreurs] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State pour afficher/masquer le mot de passe
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleIdentifiants = (ev) => {
     const { name, value } = ev.target;
@@ -21,7 +21,7 @@ function Login() {
       ...prevState,
       [name]: value,
     }));
-    setErreurs(""); // Reset errors when input changes
+    setErreurs("");
   };
 
   const handleSubmit = (ev) => {
@@ -63,35 +63,51 @@ function Login() {
     <div className="container mt-5">
       <form
         onSubmit={handleSubmit}
-        className="col-md-4 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3"
+        className="col-12 col-sm-10 col-md-7 col-lg-4 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3"
       >
         <h2 className="text-center mb-4">Se connecter</h2>
-        <div className="mb-3">
+
+        {/* Pseudo */}
+        <div className="form-floating mb-3">
           <input
             onInput={handleIdentifiants}
             name="pseudo"
             placeholder="Pseudo"
             value={identifiants.pseudo}
-            className="form-control"
+            className="form-control bg-light"
+            readOnly={tentativesAuth >= 3}
           />
+          <label>Pseudo</label>
         </div>
-        <div className="mb-3 position-relative">
+
+        {/* Mot de passe */}
+        <div className="form-floating mb-3 position-relative">
           <input
             onInput={handleIdentifiants}
             name="MotDePasse"
             placeholder="Mot de passe"
-            type={showPassword ? "text" : "password"} // Toggle le type de l'input
+            type={showPassword ? "text" : "password"}
             value={identifiants.MotDePasse}
-            className="form-control"
+            className="form-control bg-light"
+            readOnly={tentativesAuth >= 3}
           />
+          <label>Mot de passe</label>
           <button
             type="button"
             className="position-absolute top-50 end-0 translate-middle-y btn btn-link text-dark"
-            onClick={() => setShowPassword(!showPassword)} // Toggle l'affichage du mot de passe
+            onClick={() => setShowPassword(!showPassword)}
           >
             <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
           </button>
         </div>
+        {/* Erreur */}
+        {erreurs && (
+          <div className="alert alert-danger" role="alert">
+            {erreurs}
+          </div>
+        )}
+
+        {/* Bouton de soumission */}
         <div className="mb-3">
           <button
             type="submit"
@@ -101,7 +117,8 @@ function Login() {
             Se Connecter
           </button>
         </div>
-        {erreurs && <div className="text-danger mb-3">{erreurs}</div>}
+
+        {/* Lien vers la page d'inscription */}
         <div className="mt-3 text-center">
           Pas de compte ? <Link to="/register">En créer un !</Link>
         </div>

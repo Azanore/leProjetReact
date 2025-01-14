@@ -39,7 +39,7 @@ function RequestUserShow() {
                 <td
                   className={
                     demande.status === "en_attente"
-                      ? "text-warning"
+                      ? "text-secondary"
                       : demande.status === "approuvé"
                       ? "text-success"
                       : demande.status === "rejeté"
