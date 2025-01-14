@@ -74,7 +74,7 @@ function Login() {
             name="pseudo"
             placeholder="Pseudo"
             value={identifiants.pseudo}
-            className="form-control bg-light"
+            className="form-control bg-light border-0 shadow-sm"
             readOnly={tentativesAuth >= 3}
           />
           <label>Pseudo</label>
@@ -88,7 +88,7 @@ function Login() {
             placeholder="Mot de passe"
             type={showPassword ? "text" : "password"}
             value={identifiants.MotDePasse}
-            className="form-control bg-light"
+            className="form-control bg-light border-0 shadow-sm"
             readOnly={tentativesAuth >= 3}
           />
           <label>Mot de passe</label>
