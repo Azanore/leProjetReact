@@ -16,8 +16,8 @@ function Nav() {
       end
       className={({ isActive }) =>
         isActive
-          ? `btn btn-${userData.couleur} btn-sm fw-medium rounded-0`
-          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium rounded-0`
+          ? `btn btn-${userData.couleur} btn-sm fw-medium`
+          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium`
       }
     >
       {label}
