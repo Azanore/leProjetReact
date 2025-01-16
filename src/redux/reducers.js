@@ -10,6 +10,7 @@ const DELETE_DEMANDE = "DELETE_DEMANDE"; // Nouvelle action pour supprimer la de
 const CHANGER_MOT_DE_PASSE = "CHANGER_MOT_DE_PASSE";
 const UPDATE_USER = "UPDATE_USER";
 const CHANGERPOLICE = "CHANGERPOLICE";
+const CHANGER_STATUS = "CHANGER_STATUS";
 
 const authReducer = (state = { userData: "" }, action) => {
   return produce(state, (draft) => {
@@ -34,6 +35,15 @@ const authReducer = (state = { userData: "" }, action) => {
         break;
       case CHANGER_MOT_DE_PASSE:
         draft.userData.MotDePasse = action.payload;
+        break;
+      case CHANGER_STATUS:
+        draft.userData.demandes = state.userData.demandes.map((demande) => {
+          if (demande.id === action.payload.id) {
+            return { ...demande, status: action.payload.status };
+          } else {
+            return demande;
+          }
+        });
         break;
       case DELETE_DEMANDE:
         draft.userData.demandes = draft.userData.demandes.filter(

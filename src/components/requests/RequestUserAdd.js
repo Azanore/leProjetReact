@@ -70,51 +70,50 @@ const RequestUserAdd = () => {
     });
   };
 
-  return (
-    <div className="px-3 container pt-5">
-      <h2 className="mb-4 text-center">Soumettre une demande</h2>
-      <div className="row justify-content-center">
-        <form
-          onSubmit={handleSubmit}
-          className="d-flex flex-column gap-3 col-12 col-md-8 col-lg-5"
-        >
-          {/* Display success message */}
-          <div>
-            <label htmlFor="titre" className="form-label">
-              Titre de la demande
-            </label>
-            <input
-              type="text"
-              id="titre"
-              name="titre"
-              value={formData.titre}
-              onChange={handleIdentifiants}
-              className="form-control bg-light border-0 shadow-sm"
-            />
-          </div>
-          <div>
-            <label htmlFor="description" className="form-label">
-              Description de la demande
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleIdentifiants}
-              rows="4"
-              className="form-control bg-light border-0 shadow-sm"
-              style={{ resize: "none" }} // Fixed height and disabled resizing
-            ></textarea>
-          </div>
-          {error && <div className="alert alert-danger mb-0">{error}</div>}
-          {success && <div className="alert alert-success mb-0">{success}</div>}
-          <button type="submit" className={`btn btn-${userData.couleur}`}>
-            Soumettre la demande
-          </button>
-        </form>
-      </div>
+return (
+  <div className="px-3 container pt-5">
+    <h2 className="mb-4 text-center">Soumettre une demande</h2>
+    <div className="row justify-content-center">
+      <form
+        onSubmit={handleSubmit}
+        className="d-flex flex-column gap-3 col-12 col-md-8 col-lg-5"
+      >
+        <div className="form-floating">
+          <input
+            type="text"
+            id="titre"
+            name="titre"
+            value={formData.titre}
+            onChange={handleIdentifiants}
+            className="form-control bg-light border border-light-subtle shadow-sm"
+            placeholder="Titre de la demande"
+          />
+          <label htmlFor="titre">Titre de la demande</label>
+        </div>
+
+        <div className="form-floating">
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleIdentifiants}
+            className="form-control bg-light border border-light-subtle shadow-sm"
+            placeholder="Description de la demande"
+            style={{ height: "8rem", resize: "none" }}
+          ></textarea>
+          <label htmlFor="description">Description de la demande</label>
+        </div>
+
+        {error && <div className="alert alert-danger mb-0">{error}</div>}
+        {success && <div className="alert alert-success mb-0">{success}</div>}
+
+        <button type="submit" className={`btn btn-${userData.couleur}`}>
+          Soumettre la demande
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default RequestUserAdd;

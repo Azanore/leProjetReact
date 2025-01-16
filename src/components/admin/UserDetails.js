@@ -35,7 +35,7 @@ function UserDetails({ userId }) {
       <h2 className="mb-4 text-center">Profil utilisateur</h2>
       <div
         className="mb-3 d-flex justify-content-center align-items-center "
-        style={{ height: "150px" }}
+        style={{ height: "10rem" }}
       >
         <img
           src={userDetails.photo}

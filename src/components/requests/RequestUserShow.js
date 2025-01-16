@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import RequestUserDelete from "./RequestUserDelete";
 import { deleteDemande } from "../../redux/actions";
+import axios from "axios";
 
 function RequestUserShow() {
   const dispatch = useDispatch();
@@ -8,12 +9,28 @@ function RequestUserShow() {
   const demandes = useSelector((state) => state.auth.userData.demandes);
 
   const handleDelete = (demandeId) => {
-    dispatch(deleteDemande(userId, demandeId));
+    console.log(demandeId);
+    axios
+      .get("https://675afd529ce247eb19354af3.mockapi.io/users/" + userId)
+      .then((res) => {
+        let demandeStatus = res.data.demandes.find(
+          (demande) => demande.id === demandeId
+        ).status;
+        if (demandeStatus === "en_attente") {
+          dispatch(deleteDemande(userId, demandeId));
+        } else if (demandeStatus === "approuvé" || demandeStatus === "rejeté") {
+          dispatch({
+            type: "CHANGER_STATUS",
+            payload: { id: demandeId, status: demandeStatus },
+          });
+        }
+      });
   };
 
-  return (
-    <div className="px-3 pt-5">
-      <h2 className="mb-4">Mes demandes </h2>
+return (
+  <div className="px-3 pt-5">
+    <h2 className="mb-4">Mes demandes</h2>
+    <div className="table-responsive">
       <table className="table table-striped table-borderless border-bottom table-hover caption-top">
         <thead className="table-dark">
           <tr>
@@ -63,7 +80,9 @@ function RequestUserShow() {
         </tbody>
       </table>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default RequestUserShow;

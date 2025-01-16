@@ -22,7 +22,7 @@ function Profile() {
                 src={userData.photo}
                 alt="Profil"
                 className="img-thumbnail rounded-circle shadow-sm"
-                style={{ width: "150px", height: "150px", objectFit: "cover" }}
+                style={{ width: "8rem", height: "8rem", objectFit: "cover" }}
               />
               <h4 className="mt-3 mb-0">{userData.pseudo}</h4>
               <p className="text-muted">{userData.email}</p>

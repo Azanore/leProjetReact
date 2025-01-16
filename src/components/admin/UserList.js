@@ -17,7 +17,7 @@ function UserList({
           src={photo}
           alt="Profil"
           className="rounded"
-          style={{ maxWidth: "48px" }} // Correctement écrit 'style' et ajout du height 'auto' pour conserver le ratio
+          style={{ maxWidth: "3rem" }} // Correctement écrit 'style' et ajout du height 'auto' pour conserver le ratio
         />
       </td>
       <td>{nom}</td>

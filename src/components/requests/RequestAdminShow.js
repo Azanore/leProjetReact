@@ -38,7 +38,7 @@ function RequestAdminShow() {
             minute: "2-digit",
             hour12: false, // 24-hour format
           }),
-          modified_by: userAuthData.nom,
+          modified_by: userAuthData.pseudo,
         };
       } else return requete;
     });
@@ -51,78 +51,78 @@ function RequestAdminShow() {
       });
   };
 
-  return (
-    <div className="flex-grow-1 pt-5 px-3">
-      <table className="table table-striped table-borderless caption-top table-hover border-bottom mb-0">
-        <caption className="h2 p-0 mb-4">
-          Tableau de bord des demandes (Admin)
-        </caption>
-        <thead className="table-dark">
-          <tr>
-            <th>Id</th>
-            <th>Titre</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Date d'ajout</th>
-            <th>Admin chargé</th> {/* Nouvelle colonne admin */}
-            <th>Date de modification</th>{" "}
-            {/* Nouvelle colonne date de modification */}
-          </tr>
-        </thead>
-        <tbody>
-          {/* Vérifie si le tableau des demandes est vide */}
-          {demandes.length === 0 ? (
-            <tr>
-              <td colSpan={7} className="text-center">
-                Aucune demande à afficher
-              </td>
-            </tr>
-          ) : (
-            demandes.map((demande) => {
-              return (
-                <tr key={demande.id}>
-                  <td>{demande.id}</td>
-                  <td>{demande.titre}</td>
-                  <td>{demande.description}</td>
-                  <td>
-                    <select
-                      onChange={(ev) =>
-                        handleSelectChange(ev, demande.id, demande.id_user)
-                      }
-                      value={demande.status}
-                      className={`form-select form-select-sm ${
-                        demande.status === "en_attente"
-                          ? "text-secondary"
-                          : demande.status === "approuvé"
-                          ? "text-success"
-                          : demande.status === "rejeté"
-                          ? "text-danger"
-                          : ""
-                      }`}
-                    >
-                      <option className="text-dark" value="en_attente">
-                        En attente
-                      </option>
-                      <option className="text-dark" value="approuvé">
-                        Approuvé
-                      </option>
-                      <option className="text-dark" value="rejeté">
-                        Rejeté
-                      </option>
-                    </select>
-                  </td>
-                  <td>{demande.date}</td>
-                  <td>{demande.modified_by}</td> {/* Colonne admin */}
-                  <td>{demande.last_modif}</td>{" "}
-                  {/* Colonne date de modification */}
-                </tr>
-              );
-            })
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
+ return (
+   <div className="flex-grow-1 pt-5 px-3">
+     <div className="table-responsive">
+       <table className="table table-striped table-borderless caption-top table-hover border-bottom mb-0">
+         <caption className="h2 p-0 mb-4">
+           Tableau de bord des demandes (Admin)
+         </caption>
+         <thead className="table-dark">
+           <tr>
+             <th>Id</th>
+             <th>Titre</th>
+             <th>Description</th>
+             <th>Status</th>
+             <th>Date d'ajout</th>
+             <th>Admin chargé</th>
+             <th>Date de modification</th>
+           </tr>
+         </thead>
+         <tbody>
+           {demandes.length === 0 ? (
+             <tr>
+               <td colSpan={7} className="text-center text-muted">
+                 <i className="bi bi-inbox"></i> Aucune demande trouvée
+               </td>
+             </tr>
+           ) : (
+             demandes.map((demande) => {
+               return (
+                 <tr key={demande.id}>
+                   <td>{demande.id}</td>
+                   <td>{demande.titre}</td>
+                   <td>{demande.description}</td>
+                   <td>
+                     <select
+                       onChange={(ev) =>
+                         handleSelectChange(ev, demande.id, demande.id_user)
+                       }
+                       value={demande.status}
+                       className={`form-select form-select-sm ${
+                         demande.status === "en_attente"
+                           ? "text-secondary"
+                           : demande.status === "approuvé"
+                           ? "text-success"
+                           : demande.status === "rejeté"
+                           ? "text-danger"
+                           : ""
+                       }`}
+                     >
+                       <option className="text-dark" value="en_attente">
+                         En attente
+                       </option>
+                       <option className="text-dark" value="approuvé">
+                         Approuvé
+                       </option>
+                       <option className="text-dark" value="rejeté">
+                         Rejeté
+                       </option>
+                     </select>
+                   </td>
+                   <td>{demande.date}</td>
+                   <td>{demande.modified_by}</td>
+                   <td>{demande.last_modif}</td>
+                 </tr>
+               );
+             })
+           )}
+         </tbody>
+       </table>
+     </div>
+   </div>
+ );
+
 }
 
 export default RequestAdminShow;

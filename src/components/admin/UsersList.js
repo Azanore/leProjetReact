@@ -87,45 +87,44 @@ function UsersList() {
               </div>
             </div>
 
-            {viewMode === "listView" && (
-              <table className="table table-striped table-borderless caption-top table-hover mb-0 border-bottom mb-3">
-                <thead className="table-dark">
-                  <tr>
-                    <th className="d-sm-table-cell d-none">Photo</th>
-                    <th>Nom</th>
-                    <th className="d-lg-table-cell d-none">Prenom</th>
-                    <th className="d-xl-table-cell d-none">Pays</th>
-                    <th>Rôle</th>
-                    <th className="text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allUsersData.length === 0 ? (
-                    <tr>
-                      <td colSpan={6} className="text-center">
-                        Aucun utilisateur enregistré
-                      </td>
-                    </tr>
-                  ) : (
-                    allUsersData.map((user) => (
-                      <UserList
-                        key={user.id}
-                        userData={user}
-                        fetchData={fetchData}
-                        onModifyClick={() =>
-                          handleActionClick(user.id, "modify")
-                        } // Bouton Modifier
-                        onDetailsClick={() =>
-                          handleActionClick(user.id, "details")
-                        } // Bouton Détails
-                        setSelectedUserId={setSelectedUserId}
-                        setActiveSection={setActiveSection}
-                      />
-                    ))
-                  )}
-                </tbody>
-              </table>
-            )}
+       {viewMode === "listView" && (
+  <div className="table-responsive">
+    <table className="table table-striped table-borderless caption-top table-hover mb-0 border-bottom mb-3">
+      <thead className="table-dark">
+        <tr>
+          <th className="d-sm-table-cell d-none">Photo</th>
+          <th>Nom</th>
+          <th className="d-lg-table-cell d-none">Prenom</th>
+          <th className="d-xl-table-cell d-none">Pays</th>
+          <th>Rôle</th>
+          <th className="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {allUsersData.length === 0 ? (
+          <tr>
+            <td colSpan={6} className="text-center">
+              Aucun utilisateur enregistré
+            </td>
+          </tr>
+        ) : (
+          allUsersData.map((user) => (
+            <UserList
+              key={user.id}
+              userData={user}
+              fetchData={fetchData}
+              onModifyClick={() => handleActionClick(user.id, "modify")}
+              onDetailsClick={() => handleActionClick(user.id, "details")}
+              setSelectedUserId={setSelectedUserId}
+              setActiveSection={setActiveSection}
+            />
+          ))
+        )}
+      </tbody>
+    </table>
+  </div>
+)}
+
 
             {/* Vue Carte */}
             {viewMode === "cardView" && (

@@ -23,6 +23,7 @@ function Formulaire() {
     MotDePasse: "",
     confirmationMotDePasse: "",
     general: "",
+    age: "",
   });
   const [countries, setCountries] = useState([]);
   const [currencies, setCurrencies] = useState([]);
@@ -103,7 +104,10 @@ function Formulaire() {
         "Le mot de passe doit contenir un caractère spécial";
       isValid = false;
     }
-
+    if (formData.age < 10) {
+      newErrors.age = "Vous devez être agé de 10 ans au minimum";
+      isValid = false;
+    }
     if (formData.MotDePasse !== confirmationMotDePasse) {
       newErrors.confirmationMotDePasse =
         "Les mots de passe ne correspondent pas";
@@ -125,7 +129,7 @@ function Formulaire() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-    setErrors((prev) => ({ ...prev, [name]: "", general: "" }));
+    setErrors((prev) => ({ ...prev, [name]: "", general: "", age: "" }));
     setMessageSucces("");
   };
 
@@ -179,7 +183,7 @@ function Formulaire() {
                   name="nom"
                   placeholder="Nom"
                   value={formData.nom}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="nomInput"
                 />
                 <label htmlFor="nomInput">Nom</label>
@@ -192,7 +196,7 @@ function Formulaire() {
                   name="prenom"
                   placeholder="Prénom"
                   value={formData.prenom}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="prenomInput"
                 />
                 <label htmlFor="prenomInput">Prénom</label>
@@ -208,10 +212,11 @@ function Formulaire() {
                   type="number"
                   placeholder="Âge"
                   value={formData.age}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="ageInput"
                 />
                 <label htmlFor="ageInput">Âge</label>
+                {errors.age && <div className="text-danger">{errors.age}</div>}
               </div>
             </div>
             <div className="col-md-6">
@@ -221,7 +226,7 @@ function Formulaire() {
                   name="pseudo"
                   placeholder="Pseudo"
                   value={formData.pseudo}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="pseudoInput"
                 />
                 <label htmlFor="pseudoInput">Pseudo</label>
@@ -237,7 +242,7 @@ function Formulaire() {
                   type="password"
                   placeholder="Mot de passe"
                   value={formData.MotDePasse}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="passwordInput"
                 />
                 <label htmlFor="passwordInput">Mot de passe</label>
@@ -254,7 +259,7 @@ function Formulaire() {
                   type="password"
                   placeholder="Confirmer le mot de passe"
                   value={confirmationMotDePasse}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="confirmPasswordInput"
                 />
                 <label htmlFor="confirmPasswordInput">
@@ -276,7 +281,7 @@ function Formulaire() {
                   name="email"
                   placeholder="Email"
                   value={formData.email}
-                  className="form-control bg-light border-0 shadow-sm"
+                  className="form-control bg-light border border-light-subtle shadow-sm"
                   id="emailInput"
                 />
                 <label htmlFor="emailInput">Email</label>
@@ -285,7 +290,7 @@ function Formulaire() {
             <div className="col-md-6">
               <div className="form-floating">
                 <select
-                  className="form-select bg-light border-0 shadow-sm"
+                  className="form-select bg-light border border-light-subtle shadow-sm"
                   onChange={handleIdentifiants}
                   name="Devise"
                   value={formData.Devise || ""}
@@ -308,7 +313,7 @@ function Formulaire() {
             <div className="col-md-6 mb-3">
               <div className="form-floating">
                 <select
-                  className="form-select bg-light border-0 shadow-sm"
+                  className="form-select bg-light border border-light-subtle shadow-sm"
                   onChange={handleIdentifiants}
                   name="Pays"
                   value={formData.Pays || ""}
@@ -329,7 +334,7 @@ function Formulaire() {
             <div className="col-md-6">
               <div className="form-floating">
                 <select
-                  className="form-select bg-light border-0 shadow-sm"
+                  className="form-select bg-light border border-light-subtle shadow-sm"
                   onChange={handleIdentifiants}
                   name="couleur"
                   value={formData.couleur || ""}

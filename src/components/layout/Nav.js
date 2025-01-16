@@ -16,8 +16,8 @@ function Nav() {
       end
       className={({ isActive }) =>
         isActive
-          ? `btn btn-${userData.couleur} btn-sm fw-medium rounded-0`
-          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium rounded-0`
+          ? `btn btn-${userData.couleur} btn-sm px-3 fw-medium `
+          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm px-3 fw-medium `
       }
     >
       {label}
@@ -29,7 +29,7 @@ function Nav() {
       {/* Mobile Navbar */}
       <nav
         className="navbar navbar-expand-lg navbar-light bg-light py-3 d-lg-none"
-        style={{ position: "sticky", top: "0px", zIndex: 1000 }}
+        style={{ position: "sticky", top: 0, zIndex: 1000 }}
       >
         <div className="container-fluid">
           <button
@@ -47,18 +47,18 @@ function Nav() {
             <ul className="navbar-nav ms-auto">
               {renderNavLink("/dashboard", "Accueil")}
               {renderNavLink("profile", "Mon Profil")}
-              {renderNavLink("appearance", "Personnaliser l'apparence")}
-              {renderNavLink("password", "Changer mon mot de passe")}
-              {renderNavLink("text", "Changer la police")}
+              {renderNavLink("appearance", "Thème")}
+              {renderNavLink("password", "Mot de passe")}
+              {renderNavLink("text", "Police")}
               {isAdmin ? (
                 <>
-                  {renderNavLink("users", "Gestion des utilisateurs")}
-                  {renderNavLink("users/new", "Ajouter un utilisateur")}
-                  {renderNavLink("requests/admin", "Gestion des demandes")}
+                  {renderNavLink("users", "Liste utilisateurs")}
+                  {renderNavLink("users/new", "Ajouter utilisateur")}
+                  {renderNavLink("requests/admin", "Voir demandes")}
                 </>
               ) : (
                 <>
-                  {renderNavLink("requests/new", "Soumettre une demande")}
+                  {renderNavLink("requests/new", "Créer demande")}
                   {renderNavLink("requests/user", "Mes demandes")}
                 </>
               )}
@@ -81,19 +81,19 @@ function Nav() {
         <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
           <li>{renderNavLink("/dashboard", "Accueil")}</li>
           <li>{renderNavLink("profile", "Mon Profil")}</li>
-          <li>{renderNavLink("appearance", "Personnaliser l'apparence")}</li>
-          <li>{renderNavLink("password", "Changer mon mot de passe")}</li>
-          <li>{renderNavLink("text", "Changer la police")}</li>
+          <li>{renderNavLink("appearance", "Thème")}</li>
+          <li>{renderNavLink("password", "Mot de passe")}</li>
+          <li>{renderNavLink("text", "Police")}</li>
           {isAdmin && (
             <>
-              <li>{renderNavLink("users", "Gestion des utilisateurs")}</li>
-              <li>{renderNavLink("users/new", "Ajouter un utilisateur")}</li>
-              <li>{renderNavLink("requests/admin", "Gestion des demandes")}</li>
+              <li>{renderNavLink("users", "Liste utilisateurs")}</li>
+              <li>{renderNavLink("users/new", "Ajouter utilisateur")}</li>
+              <li>{renderNavLink("requests/admin", "Voir demandes")}</li>
             </>
           )}
           {!isAdmin && (
             <>
-              <li>{renderNavLink("requests/new", "Soumettre une demande")}</li>
+              <li>{renderNavLink("requests/new", "Créer demande")}</li>
               <li>{renderNavLink("requests/user", "Mes demandes")}</li>
             </>
           )}

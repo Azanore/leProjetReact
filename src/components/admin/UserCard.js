@@ -24,7 +24,7 @@ const UserCard = ({
             src={photo}
             alt={`${prenom} ${nom}`}
             className="card-img-top object-fit-cover rounded-bottom-5 p-md-3 "
-            style={{ height: "200px" }}
+            style={{ height: "14rem" }}
           />
           {admin && (
             <span className="position-absolute top-0 end-0 badge bg-success m-2">

@@ -76,7 +76,7 @@ function ModifyPassword() {
 
   return (
     <div className="container py-5">
-              <h2 className="text-center mb-4">Changer votre mot de passe</h2>
+      <h2 className="text-center mb-4">Changer votre mot de passe</h2>
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-5">
           <div className="card border-0">
@@ -92,7 +92,7 @@ function ModifyPassword() {
                     placeholder="Mot de passe actuel"
                     type="password"
                     value={passwords.currentPassword}
-                    className={`form-control border-0 shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
                       errors.currentPassword ? "is-invalid" : ""
                     }`}
                     id="currentPassword"
@@ -112,7 +112,7 @@ function ModifyPassword() {
                     placeholder="Nouveau mot de passe"
                     type="password"
                     value={passwords.newPassword}
-                    className={`form-control border-0 shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
                       errors.newPassword ? "is-invalid" : ""
                     }`}
                     id="newPassword"
@@ -130,7 +130,7 @@ function ModifyPassword() {
                     placeholder="Confirmer le nouveau mot de passe"
                     type="password"
                     value={passwords.confirmPassword}
-                    className={`form-control border-0 shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
                       errors.confirmPassword ? "is-invalid" : ""
                     }`}
                     id="confirmPassword"
