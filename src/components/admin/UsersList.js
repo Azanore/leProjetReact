@@ -89,8 +89,8 @@ function UsersList() {
 
        {viewMode === "listView" && (
   <div className="table-responsive">
-    <table className="table table-striped table-borderless caption-top table-hover mb-0 border-bottom mb-3">
-      <thead className="table-dark">
+    <table className="table table-striped table-borderless caption-top table-hover mb-0  mb-3">
+      <thead>
         <tr>
           <th className="d-sm-table-cell d-none">Photo</th>
           <th>Nom</th>

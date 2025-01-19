@@ -54,11 +54,11 @@ function RequestAdminShow() {
  return (
    <div className="flex-grow-1 pt-5 px-3">
      <div className="table-responsive">
-       <table className="table table-striped table-borderless caption-top table-hover border-bottom mb-0">
+       <table className="table table-striped table-borderless caption-top table-hover mb-0">
          <caption className="h2 p-0 mb-4">
-           Tableau de bord des demandes (Admin)
+           Tableau de bord des demandes
          </caption>
-         <thead className="table-dark">
+         <thead>
            <tr>
              <th>Id</th>
              <th>Titre</th>

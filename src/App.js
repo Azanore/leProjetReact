@@ -27,36 +27,10 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   const isAdmin = useSelector((state) => state.auth.userData.admin);
   const police = useSelector((state) => state.auth.userData.police);
-
+  document.body.style.setProperty("font-family", police);
+  
   return (
     <>
-      <style>
-        {`
-          /* Personnalisation de la barre de défilement pour tous les éléments de la page */
-          ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-          }
-          ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-          }
-          ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-          }
-          ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-          }
-
-          /* Pour Firefox */
-          * {
-            scrollbar-width: thin;
-            scrollbar-color: #888 #f1f1f1;
-          }
-           * {font-family:${police}}
-        `}
-      </style>
       <BrowserRouter>
         <Routes>
           {/* Auth routes */}

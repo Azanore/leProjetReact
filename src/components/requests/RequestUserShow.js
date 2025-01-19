@@ -31,8 +31,8 @@ return (
   <div className="px-3 pt-5">
     <h2 className="mb-4">Mes demandes</h2>
     <div className="table-responsive">
-      <table className="table table-striped table-borderless border-bottom table-hover caption-top">
-        <thead className="table-dark">
+      <table className="table table-striped table-borderless table-hover caption-top">
+        <thead>
           <tr>
             <th>Titre</th>
             <th>Description</th>
@@ -44,9 +44,9 @@ return (
         <tbody>
           {demandes.length === 0 ? (
             <tr>
-              <td colSpan={5} className="text-center">
-                Aucune demande à afficher
-              </td>
+                 <td colSpan={5} className="text-center text-muted">
+                 <i className="bi bi-inbox"></i> Aucune demande trouvée
+               </td>
             </tr>
           ) : (
             demandes.map((demande) => (

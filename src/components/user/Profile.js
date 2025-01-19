@@ -16,7 +16,9 @@ function Profile() {
       <div className="card border-0">
         <div className="card-body pt-0">
           <div className="row g-4">
-            <h2 className="card-title text-center mb-4">Détails de l'utilisateur</h2>
+            <h2 className="card-title text-center mb-4">
+              Détails de l'utilisateur
+            </h2>
             <div className="col-md-3 text-center">
               <img
                 src={userData.photo}
@@ -31,42 +33,42 @@ function Profile() {
             <div className="col-md-9">
               <div className="row g-3 d-flex h-100 w-100">
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Nom</small>
                     <strong>{userData.nom}</strong>
                   </div>
                 </div>
 
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Prénom</small>
                     <strong>{userData.prenom}</strong>
                   </div>
                 </div>
 
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Âge</small>
                     <strong>{userData.age} ans</strong>
                   </div>
                 </div>
 
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Devise</small>
                     <strong>{userData.Devise}</strong>
                   </div>
                 </div>
 
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Pays</small>
                     <strong>{userData.Pays}</strong>
                   </div>
                 </div>
 
                 <div className="col-md-6 col-lg-4">
-                  <div className="p-3 bg-light shadow-sm rounded">
+                  <div className="p-3 bgflou shadow-sm rounded">
                     <small className="text-muted d-block">Couleur</small>
                     <strong>
                       {couleurMap[userData.couleur] || userData.couleur}

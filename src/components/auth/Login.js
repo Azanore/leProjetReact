@@ -60,10 +60,10 @@ function Login() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 ">
       <form
         onSubmit={handleSubmit}
-        className="col-12 col-sm-10 col-md-7 col-lg-4 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3"
+        className="col-12 col-sm-10 col-md-7 col-lg-4 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 bgflou"
       >
         <h2 className="text-center mb-4">Se connecter</h2>
 
@@ -74,7 +74,7 @@ function Login() {
             name="pseudo"
             placeholder="Pseudo"
             value={identifiants.pseudo}
-            className="form-control bg-light border border-light-subtle shadow-sm"
+            className="form-control  border border-light-subtle shadow-sm"
             readOnly={tentativesAuth >= 3}
           />
           <label>Pseudo</label>
@@ -88,7 +88,7 @@ function Login() {
             placeholder="Mot de passe"
             type={showPassword ? "text" : "password"}
             value={identifiants.MotDePasse}
-            className="form-control bg-light border border-light-subtle shadow-sm"
+            className="form-control  border border-light-subtle shadow-sm"
             readOnly={tentativesAuth >= 3}
           />
           <label>Mot de passe</label>

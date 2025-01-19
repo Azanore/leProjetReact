@@ -6,13 +6,13 @@ function Footer() {
   const isAdmin = userData.admin;
 
   return (
-    <footer className="bg-light py-5">
+    <footer className="py-5 bgflou">
       <div className="container">
         <div className="row gy-4">
           {/* Adresse */}
           <div className="col-md-4">
             <h5 className={`mb-3`}>Notre Adresse</h5>
-            <ul className={`list-unstyled text-${userData.couleur}`}>
+            <ul className={`list-unstyled text-${userData.couleur} `}>
               <li>456 Avenue Mohammed V</li>
               <li>Rabat, Maroc</li>
               <li>Tél: +212 5 37 77 55 99</li>
@@ -85,9 +85,7 @@ function Footer() {
         {/* Copyright */}
         <div className="row">
           <div className="col-12 text-center">
-            <p className={`m-0`}>
-              © 2024 MonCoin. Tous droits réservés.
-            </p>
+            <p className={`m-0`}>© 2024 MonCoin. Tous droits réservés.</p>
           </div>
         </div>
       </div>

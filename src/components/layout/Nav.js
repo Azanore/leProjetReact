@@ -17,7 +17,7 @@ function Nav() {
       className={({ isActive }) =>
         isActive
           ? `btn btn-${userData.couleur} btn-sm px-3 fw-medium `
-          : `btn bg-white shadow-sm text-${userData.couleur} btn-sm px-3 fw-medium `
+          : `btn bgflou text-${userData.couleur} btn-sm px-3 fw-medium `
       }
     >
       {label}
@@ -28,7 +28,7 @@ function Nav() {
     <>
       {/* Mobile Navbar */}
       <nav
-        className="navbar navbar-expand-lg navbar-light bg-light py-3 d-lg-none"
+        className="navbar navbar-expand-lg shadow-sm bgflou py-3 d-lg-none"
         style={{ position: "sticky", top: 0, zIndex: 1000 }}
       >
         <div className="container-fluid">
@@ -62,13 +62,12 @@ function Nav() {
                   {renderNavLink("requests/user", "Mes demandes")}
                 </>
               )}
-              <div className="nav-item d-flex justify-content-center bg-white">
+              <div className="nav-item d-flex justify-content-center bgflou">
                 <button
                   onClick={handleClick}
-                  className={`btn bg-white shadow-sm text-${userData.couleur} btn-sm fw-medium w-100`}
+                  className={`btn bgflou text-${userData.couleur} btn-sm fw-medium w-100`}
                 >
                   Se déconnecter
-                  <i className="bi bi-box-arrow-right ms-2"></i>
                 </button>
               </div>
             </ul>
@@ -77,7 +76,7 @@ function Nav() {
       </nav>
 
       {/* Desktop Navbar */}
-      <nav className="pt-2 bg-light rounded-bottom-3 pb-1 d-none d-lg-block">
+      <nav className="pt-2  rounded-bottom-3 pb-1 d-none d-lg-block">
         <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
           <li>{renderNavLink("/dashboard", "Accueil")}</li>
           <li>{renderNavLink("profile", "Mon Profil")}</li>

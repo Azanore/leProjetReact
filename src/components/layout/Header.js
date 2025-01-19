@@ -10,7 +10,7 @@ function Header() {
   };
   return (
     <header
-      className={`d-md-flex bg-light justify-content-between align-items-center p-2 text-white d-none`}
+      className={`d-md-flex  justify-content-between align-items-center p-2 text-white d-none`}
     >
       <div className="d-flex align-items-center">
         <img

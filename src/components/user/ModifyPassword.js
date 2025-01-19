@@ -92,7 +92,7 @@ function ModifyPassword() {
                     placeholder="Mot de passe actuel"
                     type="password"
                     value={passwords.currentPassword}
-                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg  ${
                       errors.currentPassword ? "is-invalid" : ""
                     }`}
                     id="currentPassword"
@@ -112,7 +112,7 @@ function ModifyPassword() {
                     placeholder="Nouveau mot de passe"
                     type="password"
                     value={passwords.newPassword}
-                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg  ${
                       errors.newPassword ? "is-invalid" : ""
                     }`}
                     id="newPassword"
@@ -130,7 +130,7 @@ function ModifyPassword() {
                     placeholder="Confirmer le nouveau mot de passe"
                     type="password"
                     value={passwords.confirmPassword}
-                    className={`form-control border border-light-subtle shadow-sm bg bg-light ${
+                    className={`form-control border border-light-subtle shadow-sm bg  ${
                       errors.confirmPassword ? "is-invalid" : ""
                     }`}
                     id="confirmPassword"

@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import UserDelete from './UserDelete';
+import React from "react";
+import { useSelector } from "react-redux";
+import UserDelete from "./UserDelete";
 
 const UserCard = ({
   userData: { id, photo, nom, prenom, Pays, admin },
@@ -13,18 +13,20 @@ const UserCard = ({
   const userData = useSelector((state) => state.auth.userData);
 
   return (
-    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 flex-grow-1 shadow ">
+    <div
+      className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 flex-grow-1 shadow-sm"
+      style={{ maxWidth: "300px", margin: "auto" }}
+    >
       <div
-        className={`card h-100 ${
+        className={`card h-100 p-3 ${
           id === userData.id ? `border-2 border-${userData.couleur}` : "border"
         }`}
       >
-        <div className="position-relative ">
+        <div className="position-relative">
           <img
             src={photo}
             alt={`${prenom} ${nom}`}
-            className="card-img-top object-fit-cover rounded-bottom-5 p-md-3 "
-            style={{ height: "14rem" }}
+            className="card-img-top object-fit-cover "
           />
           {admin && (
             <span className="position-absolute top-0 end-0 badge bg-success m-2">

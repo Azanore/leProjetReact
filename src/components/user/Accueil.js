@@ -36,7 +36,7 @@ function Accueil() {
         </h3>
         <div className="row justify-content-center gap-4">
           <div className="col-md-3  mb-3">
-            <div className="card h-100 bg-light shadow-sm border-0">
+            <div className="card h-100 bgflou shadow-sm border-0">
               <div className="card-body">
                 <h5 className="card-title">📊 Gestion Simplifiée</h5>
                 <p className="card-text text-muted">
@@ -46,7 +46,7 @@ function Accueil() {
             </div>
           </div>
           <div className="col-md-3  mb-3">
-            <div className="card h-100 bg-light shadow-sm border-0">
+            <div className="card h-100 bgflou shadow-sm border-0">
               <div className="card-body">
                 <h5 className="card-title">⏱️ Suivi en Temps Réel</h5>
                 <p className="card-text text-muted">
@@ -57,7 +57,7 @@ function Accueil() {
             </div>
           </div>
           <div className="col-md-3  mb-3">
-            <div className="card h-100 bg-light shadow-sm border-0">
+            <div className="card h-100 bgflou shadow-sm border-0">
               <div className="card-body">
                 <h5 className="card-title">🎯 Simplicité & Clarté</h5>
                 <p className="card-text text-muted">

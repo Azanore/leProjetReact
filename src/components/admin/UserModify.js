@@ -96,12 +96,12 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
       }}
     >
       <div className="card border-0 h-100">
-        <div className="card-body px-3 px-lg-0 pe-lg-2">
+        <div className="card-body pt-0 px-3 px-lg-0 pe-lg-2">
           <h2 className="card-title text-center mb-4">Éditer l'utilisateur</h2>
           <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
             <div className="form-floating">
               <input
-                className="form-control bg bg-light border border-light-subtle shadow-sm"
+                className="form-control bg  border border-light-subtle shadow-sm"
                 onInput={handleIdentifiants}
                 name="nom"
                 id="nom"
@@ -113,7 +113,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <input
-                className="form-control bg bg-light border border-light-subtle shadow-sm"
+                className="form-control bg  border border-light-subtle shadow-sm"
                 onInput={handleIdentifiants}
                 name="prenom"
                 id="prenom"
@@ -125,7 +125,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <input
-                className="form-control bg bg-light border border-light-subtle shadow-sm"
+                className="form-control bg  border border-light-subtle shadow-sm"
                 onInput={handleIdentifiants}
                 name="age"
                 id="age"
@@ -138,7 +138,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <input
-                className="form-control bg bg-light border border-light-subtle shadow-sm"
+                className="form-control bg  border border-light-subtle shadow-sm"
                 onInput={handleIdentifiants}
                 name="pseudo"
                 id="pseudo"
@@ -150,7 +150,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <input
-                className="form-control bg bg-light border border-light-subtle shadow-sm"
+                className="form-control bg  border border-light-subtle shadow-sm"
                 onInput={handleIdentifiants}
                 name="email"
                 id="email"
@@ -162,7 +162,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <select
-                className="form-select bg bg-light border border-light-subtle shadow-sm"
+                className="form-select bg  border border-light-subtle shadow-sm"
                 onChange={handleIdentifiants}
                 name="Devise"
                 id="Devise"
@@ -182,7 +182,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <select
-                className="form-select bg bg-light border border-light-subtle shadow-sm"
+                className="form-select bg  border border-light-subtle shadow-sm"
                 onChange={handleIdentifiants}
                 name="Pays"
                 id="Pays"
@@ -200,7 +200,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
 
             <div className="form-floating">
               <select
-                className="form-select bg bg-light border border-light-subtle shadow-sm"
+                className="form-select bg  border border-light-subtle shadow-sm"
                 onChange={handleIdentifiants}
                 name="couleur"
                 id="couleur"
@@ -232,10 +232,7 @@ function UserModify({ userId, fetchData, setSelectedUserId }) {
             </div>
 
             <div className="d-grid mt-2">
-              <button
-                type="submit"
-                className={`btn btn-${userData.couleur}`}
-              >
+              <button type="submit" className={`btn btn-${userData.couleur}`}>
                 Modifier
               </button>
             </div>

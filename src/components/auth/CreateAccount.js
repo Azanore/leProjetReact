@@ -179,10 +179,10 @@ function Formulaire() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 ">
       <form
         onSubmit={handleSubmit}
-        className="col-md-10 col-lg-8 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 d-flex flex-column gap-3"
+        className="col-md-10 col-lg-8 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 d-flex flex-column gap-3 bgflou"
       >
         {/* Logo and Heading */}
         <div className="text-center mb-4">
@@ -201,7 +201,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="text"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control border border-light-subtle shadow-sm"
                 id="nom"
                 name="nom"
                 placeholder="Nom"
@@ -215,7 +215,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="text"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control  border border-light-subtle shadow-sm"
                 id="prenom"
                 name="prenom"
                 placeholder="Prénom"
@@ -233,7 +233,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="number"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control  border border-light-subtle shadow-sm"
                 id="age"
                 name="age"
                 placeholder="Âge"
@@ -248,7 +248,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="text"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control  border border-light-subtle shadow-sm"
                 id="pseudo"
                 name="pseudo"
                 placeholder="Pseudo"
@@ -266,7 +266,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="password"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control  border border-light-subtle shadow-sm"
                 id="MotDePasse"
                 name="MotDePasse"
                 placeholder="Mot de passe"
@@ -283,7 +283,7 @@ function Formulaire() {
             <div className="form-floating">
               <input
                 type="password"
-                className="form-control bg-light border border-light-subtle shadow-sm"
+                className="form-control  border border-light-subtle shadow-sm"
                 id="confirmationMotDePasse"
                 name="confirmationMotDePasse"
                 placeholder="Confirmer le mot de passe"
@@ -307,7 +307,7 @@ function Formulaire() {
         <div className="form-floating">
           <input
             type="email"
-            className="form-control bg-light border border-light-subtle shadow-sm"
+            className="form-control  border border-light-subtle shadow-sm"
             id="email"
             name="email"
             placeholder="Email"
@@ -322,7 +322,7 @@ function Formulaire() {
           <div className="col-md-6">
             <div className="form-floating">
               <select
-                className="form-select bg-light border border-light-subtle shadow-sm"
+                className="form-select  border border-light-subtle shadow-sm"
                 id="Devise"
                 name="Devise"
                 value={formData.Devise || ""}
@@ -343,7 +343,7 @@ function Formulaire() {
           <div className="col-md-6">
             <div className="form-floating">
               <select
-                className="form-select bg-light border border-light-subtle shadow-sm"
+                className="form-select  border border-light-subtle shadow-sm"
                 id="Pays"
                 name="Pays"
                 value={formData.Pays || ""}
@@ -366,7 +366,7 @@ function Formulaire() {
         {/* Couleur */}
         <div className="form-floating">
           <select
-            className="form-select bg-light border border-light-subtle shadow-sm"
+            className="form-select  border border-light-subtle shadow-sm"
             id="couleur"
             name="couleur"
             value={formData.couleur || ""}

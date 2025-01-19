@@ -113,10 +113,10 @@ function ModifyFont() {
               <button
                 key={font.id}
                 onClick={() => handleFontChange(font)}
-                className={`btn m-2 p-3 shadow-sm flex-grow-1 ${
+                className={`btn m-2 px-3 py-2 shadow-sm flex-grow-1 ${
                   newFont === font.id
                     ? `btn-${userData.couleur} text-white`
-                    : "btn-light"
+                    : "bgflou"
                 }`}
                 style={{
                   fontFamily: font.id,

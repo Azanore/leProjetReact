@@ -15,23 +15,17 @@ function Aside() {
       : `btn text-${userData.couleur} btn-sm rounded-0 rounded-end-2 w-100 fw-medium text-start`;
 
   const NavLinkItem = ({ to, children }) => (
-      <NavLink
-        to={to}
-        end
-        className={({ isActive }) => getButtonClass(isActive)}
-      >
-        {children}
-      </NavLink>
+    <NavLink to={to} end className={({ isActive }) => getButtonClass(isActive)}>
+      {children}
+    </NavLink>
   );
 
   return (
     <div
-      className={`bg-light pt-3 pb-5 rounded d-xl-block d-none ${
-        isOpen ? "col-2" : ""
-      }`}
+      className={`pt-3 pb-5 rounded d-xl-block d-none ${isOpen ? "col-2" : ""}`}
     >
       <nav
-        className="bg-white rounded-end-4 shadow-sm d-flex gap-0"
+        className="rounded-end-4 shadow-sm d-flex gap-0 bgflou"
         style={{
           position: "sticky",
           top: 0,
