@@ -1,19 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 function Nav() {
   const userData = useSelector((state) => state.auth.userData);
   const isAdmin = userData.admin;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navbarToggler = useRef(null);
+
   const handleClick = async () => {
     await navigate("", { replace: true });
     dispatch({ type: "LOGOUT" });
   };
+
+  // Function to collapse the navbar
+  const collapseNavbar = () => {
+    if (window.innerWidth < 992) {
+      // lg breakpoint is 992px
+      navbarToggler.current?.click();
+    }
+  };
+
   const renderNavLink = (to, label) => (
     <NavLink
       to={to}
       end
+      onClick={collapseNavbar}
       className={({ isActive }) =>
         isActive
           ? `btn btn-${userData.couleur} btn-sm px-3 fw-medium `
@@ -33,7 +46,8 @@ function Nav() {
       >
         <div className="container-fluid">
           <button
-            className="navbar-toggler "
+            ref={navbarToggler}
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#mobileNavbar"
@@ -64,7 +78,10 @@ function Nav() {
               )}
               <div className="nav-item d-flex justify-content-center bgflou">
                 <button
-                  onClick={handleClick}
+                  onClick={(e) => {
+                    collapseNavbar();
+                    handleClick(e);
+                  }}
                   className={`btn bgflou text-${userData.couleur} btn-sm fw-medium w-100`}
                 >
                   Se déconnecter
@@ -76,7 +93,7 @@ function Nav() {
       </nav>
 
       {/* Desktop Navbar */}
-      <nav className="pt-2  rounded-bottom-3 pb-1 d-none d-lg-block">
+      <nav className="pt-2 rounded-bottom-3 pb-1 d-none d-lg-block">
         <ul className="list-unstyled d-flex justify-content-center gap-3 align-items-center mb-0">
           <li>{renderNavLink("/dashboard", "Accueil")}</li>
           <li>{renderNavLink("profile", "Mon Profil")}</li>
