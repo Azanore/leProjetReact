@@ -6,7 +6,7 @@ function Accueil() {
   return (
     <div className="container text-center py-5">
       {/* En-tête principale */}
-      <h1 className="mb-4 fw-bold">
+      <h1 className="mb-4 fw-medium">
         Bienvenue sur{" "}
         <span className={`text-${userData.couleur}`}>MonCoin</span> 🏠
       </h1>
@@ -69,15 +69,6 @@ function Accueil() {
           </div>
         </div>
       </div>
-
-      {/* Appel à l'action */}
-      {!isAuthenticated && (
-        <div className="mt-5">
-          <a href="/connexion" className="btn btn-primary btn-lg shadow-sm">
-            🚪 Connectez-vous maintenant !
-          </a>
-        </div>
-      )}
     </div>
   );
 }

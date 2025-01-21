@@ -184,16 +184,7 @@ function Formulaire() {
         onSubmit={handleSubmit}
         className="col-md-10 col-lg-8 mx-auto shadow-lg p-4 pt-5 my-4 rounded-3 d-flex flex-column gap-3 bgflou"
       >
-        {/* Logo and Heading */}
-        <div className="text-center mb-4">
-          <img
-            src="/logo.svg"
-            alt="Logo"
-            className="mb-3 rounded shadow"
-            style={{ width: "8rem", height: "auto" }}
-          />
-          <h2>Créer un compte</h2>
-        </div>
+        <h2 className="text-center mb-4">Créer un compte</h2>
 
         {/* Nom et Prénom */}
         <div className="row g-3">
