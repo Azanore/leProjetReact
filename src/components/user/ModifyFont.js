@@ -5,20 +5,33 @@ import { changeFont } from "../../redux/actions";
 function ModifyFont() {
   const dispatch = useDispatch();
   const [newFont, setNewFont] = useState("");
-  const [realFont, setRealFont] = useState("");
+  const [message, setMessage] = useState(""); // Ajout du message
   const userData = useSelector((state) => state.auth.userData);
 
   const handleFontChange = (font) => {
+    setMessage(""); // Reset du message à chaque changement de police
+
     setNewFont(font.id);
-    setRealFont(font.fr);
-    dispatch(changeFont(font.id, userData.id)); // Mise à jour de la police
+
+    // Mise à jour de la police
+    dispatch(changeFont(font.id, userData.id))
+      .then(() => {
+        // Affichage du message de succès
+        setMessage({
+          text: `La police a été changée en : ${font.fr}`,
+          colorId: "success",
+        });
+      })
+      .catch(() => {
+        // Affichage du message d'erreur en cas de problème
+        setMessage({
+          text: "Erreur lors du changement de police.",
+          colorId: "danger",
+        });
+      });
   };
 
   const fonts = [
-    {
-      id: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
-      fr: "System UI",
-    },
     {
       id: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       fr: "Inter",
@@ -43,10 +56,6 @@ function ModifyFont() {
     {
       id: "'Nunito', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
       fr: "Nunito",
-    },
-    {
-      id: "'Nunito Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
-      fr: "Nunito Sans",
     },
     {
       id: "'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif",
@@ -78,24 +87,11 @@ function ModifyFont() {
       fr: "IBM Plex Serif",
     },
     { id: "'Oswald', 'Impact', 'Arial Narrow Bold', sans-serif", fr: "Oswald" },
-    {
-      id: "'Bebas Neue', 'Impact', 'Arial Narrow Bold', sans-serif",
-      fr: "Bebas Neue",
-    },
     { id: "'DM Sans', 'Helvetica Neue', Arial, sans-serif", fr: "DM Sans" },
     { id: "'Quicksand', 'Helvetica Neue', Arial, sans-serif", fr: "Quicksand" },
     {
-      id: "'IBM Plex Mono', 'Consolas', 'Monaco', monospace",
-      fr: "IBM Plex Mono",
-    },
-    {
       id: "'Source Code Pro', 'Consolas', 'Monaco', monospace",
       fr: "Source Code Pro",
-    },
-    { id: "'Fira Code', 'Consolas', 'Monaco', monospace", fr: "Fira Code" },
-    {
-      id: "'Dancing Script', 'Brush Script MT', cursive",
-      fr: "Dancing Script",
     },
     { id: "'Pacifico', 'Brush Script MT', cursive", fr: "Pacifico" },
     { id: "'Georgia', 'Times New Roman', Times, serif", fr: "Georgia" },
@@ -131,10 +127,13 @@ function ModifyFont() {
           </div>
         </div>
 
-        {newFont && (
-          <div className="alert alert-success text-center" role="alert">
-            La police a été changée en :{" "}
-            <span style={{ fontFamily: newFont }}>{realFont}</span>
+        {/* Affichage du message après changement */}
+        {message && (
+          <div
+            className={`alert alert-${message.colorId} text-center`}
+            role="alert"
+          >
+            {message.text}
           </div>
         )}
       </div>

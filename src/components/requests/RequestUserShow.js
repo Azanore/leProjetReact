@@ -19,12 +19,16 @@ function RequestUserShow() {
         if (demandeStatus === "en_attente") {
           dispatch(deleteDemande(userId, demandeId));
         } else if (demandeStatus === "approuvé" || demandeStatus === "rejeté") {
+            alert(
+              "Vous ne pouvez pas supprimer cette demande car son statut a changé."
+            );
           dispatch({
             type: "CHANGER_STATUS",
             payload: { id: demandeId, status: demandeStatus },
           });
         }
-      });
+      });      
+      
   };
 
 return (

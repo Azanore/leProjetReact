@@ -19,7 +19,7 @@ function Header() {
           className="img-fluid rounded ms-2"
           style={{ width: "4rem" }}
         />
-        <h1 className={`ms-3 mb-0  d-none d-lg-block text-dark fw-bolder`}>MonCoin</h1>
+        <h2 className={`ms-3 mb-0  d-none d-lg-block text-dark fw-bolder`}>MonCoin</h2>
       </div>
 
       {userData && (
