@@ -85,7 +85,7 @@ function Footer() {
         {/* Copyright */}
         <div className="row">
           <div className="col-12 text-center">
-            <p className={`m-0`}>© 2024 MonCoin. Tous droits réservés.</p>
+            <p className={`m-0`}>© 2025 MonCoin. Tous droits réservés.</p>
           </div>
         </div>
       </div>
